@@ -1,13 +1,19 @@
 # OpenRouter MCP Server
 
-[![MCP Server](https://img.shields.io/badge/MCP-Server-green)](https://github.com/heltonteixeira/openrouterai)
-[![Version](https://img.shields.io/badge/version-2.2.0-blue)](CHANGELOG.md)
+[![MCP Server](https://img.shields.io/badge/MCP-Server-green)](https://github.com/arbal/openrouterai)
+[![Version](https://img.shields.io/badge/version-2.2.1-blue)](CHANGELOG.md)
 [![TypeScript](https://img.shields.io/badge/language-TypeScript-blue)](https://www.typescriptlang.org/)
 [![License](https://img.shields.io/badge/license-Apache%202.0-brightgreen)](LICENSE)
 
 A Model Context Protocol (MCP) server providing seamless integration with OpenRouter.ai's diverse model ecosystem. Access various AI models through a unified, type-safe interface with built-in caching, rate limiting, and error handling.
 
-<a href="https://glama.ai/mcp/servers/xdnmf8yei0"><img width="380" height="200" src="https://glama.ai/mcp/servers/xdnmf8yei0/badge" alt="OpenRouter Server MCP server" /></a>
+## Fork Information
+
+This repository is a fork of [`heltonteixeira/openrouterai`](https://github.com/heltonteixeira/openrouterai). It includes the following modifications:
+
+*   **Configurable Base URL**: Added support for a custom OpenRouter API base URL via the `OPENROUTER_BASE_URL` environment variable.
+
+All original credit for the core functionality and design of this server goes to the original authors.
 
 ## Features
 
@@ -41,6 +47,7 @@ pnpm install @mcpservers/openrouterai
 ### Environment Variables
 
 *   `OPENROUTER_API_KEY`: **Required**. Your OpenRouter API key.
+*   `OPENROUTER_BASE_URL`: Optional. The base URL for the OpenRouter API. Defaults to `https://openrouter.ai/api/v1`.
 *   `OPENROUTER_DEFAULT_MODEL`: Optional. The default model to use if not specified in the request (e.g., `openrouter/auto`).
 *   `OPENROUTER_MAX_TOKENS`: Optional. Default maximum number of tokens to generate if `max_tokens` is not provided in the request.
 *   `OPENROUTER_PROVIDER_QUANTIZATIONS`: Optional. Comma-separated list of default quantization levels to filter by (e.g., `fp16,int8`) if `provider.quantizations` is not provided in the request. (Phase 1)
@@ -54,6 +61,7 @@ pnpm install @mcpservers/openrouterai
 ```env
 # Example .env file content
 OPENROUTER_API_KEY=your-api-key-here
+OPENROUTER_BASE_URL=https://openrouter.ai/api/v1
 OPENROUTER_DEFAULT_MODEL=openrouter/auto
 OPENROUTER_MAX_TOKENS=1024
 OPENROUTER_PROVIDER_QUANTIZATIONS=fp16,int8

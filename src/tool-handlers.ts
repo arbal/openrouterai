@@ -43,11 +43,12 @@ export class ToolHandlers {
     defaultProviderOrder?: string[],
     defaultProviderRequireParameters?: boolean,
     defaultProviderDataCollection?: "allow" | "deny",
-    defaultProviderAllowFallbacks?: boolean
+    defaultProviderAllowFallbacks?: boolean,
+    baseURL?: string
   ) {
     this.server = server;
     this.modelCache = ModelCache.getInstance();
-    this.apiClient = new OpenRouterAPIClient(apiKey);
+    this.apiClient = new OpenRouterAPIClient(apiKey, baseURL);
     this.defaultModel = defaultModel;
     this.defaultMaxTokens = defaultMaxTokens;
     this.defaultQuantizations = defaultQuantizations;
@@ -61,9 +62,9 @@ export class ToolHandlers {
 
     this.openai = new OpenAI({
       apiKey: apiKey,
-      baseURL: 'https://openrouter.ai/api/v1',
+      baseURL: baseURL || 'https://openrouter.ai/api/v1',
       defaultHeaders: {
-        'HTTP-Referer': 'https://github.com/heltonteixeira/openrouterai',
+        'HTTP-Referer': 'https://github.com/arbal/openrouterai',
         'X-Title': 'MCP OpenRouter Server',
       },
     });

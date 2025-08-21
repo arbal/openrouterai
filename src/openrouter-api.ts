@@ -18,13 +18,13 @@ export class OpenRouterAPIClient {
     total: 50
   };
 
-  constructor(apiKey: string) {
+  constructor(apiKey: string, baseURL: string = 'https://openrouter.ai/api/v1') {
     // Initialize axios instance for OpenRouter API
     this.axiosInstance = axios.create({
-      baseURL: 'https://openrouter.ai/api/v1',
+      baseURL: baseURL,
       headers: {
         'Authorization': `Bearer ${apiKey}`,
-        'HTTP-Referer': 'https://github.com/heltonteixeira/openrouterai',
+        'HTTP-Referer': 'https://github.com/arbal/openrouterai',
         'X-Title': 'MCP OpenRouter Server'
       }
     });
