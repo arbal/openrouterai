@@ -5,6 +5,7 @@ import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js'
 import { ToolHandlers } from './tool-handlers.js';
 
 const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
+const OPENROUTER_BASE_URL = process.env.OPENROUTER_BASE_URL;
 const DEFAULT_MODEL = process.env.OPENROUTER_DEFAULT_MODEL;
 const DEFAULT_MAX_TOKENS = process.env.OPENROUTER_MAX_TOKENS; // String | undefined
 const DEFAULT_QUANTIZATIONS = process.env.OPENROUTER_PROVIDER_QUANTIZATIONS?.split(',').map(q => q.trim()).filter(q => q) || undefined; // string[] | undefined
@@ -51,7 +52,8 @@ class OpenRouterServer {
       DEFAULT_PROVIDER_ORDER,
       DEFAULT_PROVIDER_REQUIRE_PARAMETERS,
       DEFAULT_PROVIDER_DATA_COLLECTION,
-      DEFAULT_PROVIDER_ALLOW_FALLBACKS
+      DEFAULT_PROVIDER_ALLOW_FALLBACKS,
+      OPENROUTER_BASE_URL
     );
     
     // Error handling
